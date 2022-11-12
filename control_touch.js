@@ -9,6 +9,15 @@ attack_btn_player2.addEventListener("touchstart",function(){
     Player2.attacking();
     console.log('attack')    
 },false)
+attack_btn_player1.addEventListener("touchend",function(){
+    Player1.attack = false 
+},false)
+attack_btn_player2.addEventListener("touchend",function(){
+    Player2.attack = false
+        
+},false)
+
+
 
 
 
