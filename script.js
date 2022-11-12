@@ -12,13 +12,7 @@ const coeffWidth = 0.8;
 const coeffhight = 0.65;
 let gameStatus = 1;
 
-if(window.innerWidth < window.innerHeight ){
-    alert('Переверни устройство')
-    
-}
-if (window.innerWidth > window.innerHeight ) {
-    btnStart.addEventListener('click',startGame,false) 
- }  
+ 
 // console.log(window.innerWidth,window.innerHeight)
 
 
@@ -462,38 +456,43 @@ document.addEventListener('keyup',(EO)=>{
 
 
 
-//таймер
-let timerCase;
-function timer(){
-    if(timerRound > 0){
-        timerCase = setTimeout(timer,1000)
-        timerRound--;
-        timerGameround.innerHTML = `${timerRound}`;
-    }
-    if (timerRound === 0){
-        winnerPlayer()    
-    }   
-}
-//условия победы
-function winnerPlayer(timerCase){
-    clearTimeout(timerCase)
-    if(Player1.health === Player2.health){
-    console.log("ничья")
-    } else if (Player1.health < Player2.health){
-    console.log("победил игрок 2")
-    } else if (Player1.health > Player2.health){
-    console.log("победил игрок 1")
-    } 
 
-}
-timer()
+
+
 
 
 function startGame(){
     
     clickSound(); 
-    btnStart.parentNode.removeChild(btnStart)
-    wrapStart.style.display = 'inline-block';   
+    // btnStart.parentNode.removeChild(btnStart)
+    wrapStart.style.display = 'inline-block';  
+    
+    
+    //таймер
+    let timerCase;
+    function timer(){
+        if(timerRound > 0){
+            timerCase = setTimeout(timer,1000)
+            timerRound--;
+            timerGameround.innerHTML = `${timerRound}`;
+        }
+        if (timerRound === 0){
+            winnerPlayer()    
+        }   
+    }
+    //условия победы
+    function winnerPlayer(timerCase){
+        clearTimeout(timerCase)
+        if(Player1.health === Player2.health){
+        console.log("ничья")
+        } else if (Player1.health < Player2.health){
+        console.log("победил игрок 2")
+        } else if (Player1.health > Player2.health){
+        console.log("победил игрок 1")
+        } 
+
+    }
+    timer()
     
     //анимация движения
     function tick(){

@@ -8,17 +8,38 @@
     <title>Game</title>
 </head>
 <body>
-    <input class='start_game'type='button'  value='Cтарт игры!'>
+    
 
     <div class="main">
+        <input class='start_game'type='button'  value='Cтарт игры!'>
+        <input class='control'type='button'  value='Управлене'>
+        <input class='control'type='button'  value='Показать кнопки управления'>
+        <input class='control'type='button'  value='Рестарт'>
+        <input class='soun'type='button'  value='Звук'>
         <div class="wrap">
+
             <div class="health_timer_panel">
                 <div class="wrap_health wrap_health1"><div class="health_player1"></div></div>
                 
                 <div class="timer">
-                    60
+                    
                 </div>
-                <div class="wrap_health wrap_health2"><div class="health_player2"></div></div>
+                <div class="wrap_health wrap_health2"><div class="health_player2"></div></div>    
+            </div>
+            <div class="control_btn control_btn__player1">
+                <div class="up"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="attack_btn_player1">
+
+            </div>
+            <div class="control_btn control_btn_player2">
+                <div class="up"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="attack_btn_player2">
                 
             </div>
             <canvas class="field"></canvas>
@@ -26,6 +47,7 @@
     </div>
     <script src="musicscript.js"></script>
     <script src="script.js"></script>
+    <script src="control_touch.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
