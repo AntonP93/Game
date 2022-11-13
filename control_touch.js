@@ -8,10 +8,12 @@ let right_player2 = document.querySelector('.right_player2')
 let left_player2 = document.querySelector('.left_player2')
 let up_player2 = document.querySelector('.up_player2')
 
-if(gameStatus === 1){
+// if(gameStatus === 1){
     attack_btn_player1.addEventListener("touchstart",function(){
+        
         Player1.attacking();
-        console.log('attack')    
+        
+        console.log(gameStatus)    
     },false)
     attack_btn_player2.addEventListener("touchstart",function(){
         Player2.attacking();
@@ -41,6 +43,7 @@ if(gameStatus === 1){
         Player1.speed.x = 0;   
     },false)
     up_player1.addEventListener("touchstart",function(){
+        if(Player1.speed.y == 0)
         Player1.speed.y = -10;   
     },false);
 
@@ -62,10 +65,11 @@ if(gameStatus === 1){
     },false)
 
     up_player2.addEventListener("touchstart",function(){
+        if(Player2.speed.y == 0)
         Player2.speed.y = -10;   
     },false);
 
-}
+// }
 
 // обработчики ударов и передвижения
 document.addEventListener('keydown',(EO)=>{
@@ -82,7 +86,7 @@ document.addEventListener('keydown',(EO)=>{
                 Player1.speed.x = -5;
             break 
             case 'w':
-
+                if(Player1.speed.y == 0)
                 Player1.speed.y = -10;
             break 
             case 'ArrowRight':
@@ -94,7 +98,7 @@ document.addEventListener('keydown',(EO)=>{
                 Player2.speed.x = -5;
             break
             case 'ArrowUp':
-
+                if(Player2.speed.y == 0)
                 Player2.speed.y = -10;
             break
             case 's':

@@ -5,14 +5,39 @@ body{
     padding: 0;
     margin: 0;
     position: relative;
+    background:url(img/backgroundMain.jpg);
 }
+
 .start_game{
     display: inline-block;
 }
 .main{
+    position: relative;
     display: block;
     margin: 0 auto;
     width: 1024px;
+
+}
+.main_tab{
+    display: block;
+    margin:  0 auto;
+}
+.main_tab_title{
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+.main_tab_content{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+.main_buttons{
+    margin: 0 auto;
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
 }
 .wrap{
     position: relative;
@@ -73,26 +98,26 @@ body{
 }
 .control_btn_player2 {
     position: absolute;
-    left: 90%;
+    left: 85%;
     bottom: 2%;
 }
 .up{
     display: block;
     margin: 0 auto;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     background: url(img/control/circle-arrow-up-solid.svg) center center/cover no-repeat;
 }
 .left{
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     background: url(img/control/circle-arrow-left-solid.svg) center center/cover no-repeat;
 }
 .right{
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     background: url(img/control/circle-arrow-right-solid.svg) center center/cover no-repeat;
 }
 
@@ -105,7 +130,7 @@ body{
     background: url(img/control/sword_icon_138128.svg) center center/cover no-repeat;
 }
 .attack_btn_player2{
-    right: 15%;
+    right: 17%;
     bottom: 2%;
     width: 75px;
     height: 75px;
