@@ -9,6 +9,8 @@ function clickSound() {
 }
 function soundHit(){
     clickAudioHit.currentTime=0; // в секундах
-    clickAudioHit.play(); 
-    console.log('sound')  
+    clickAudioHit.play();  
+}
+function soundOff(){
+    clickAudio.pause();
 }

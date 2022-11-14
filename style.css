@@ -5,7 +5,8 @@ body{
     padding: 0;
     margin: 0;
     position: relative;
-    background:url(img/backgroundMain.jpg);
+    background:url(img/backgroundMain.jpg) no-repeat;
+   
 }
 
 .start_game{
@@ -136,4 +137,15 @@ body{
     height: 75px;
     position: absolute;
     background: url(img/control/sword_icon_138128.svg) center center/cover no-repeat;
+}
+.btn{
+    width: 20%;
+    height: 10%;
+}
+.btn_close{
+    display: block;
+    margin: 0 auto;
+}
+.wrap_btn_controlPlayer{
+    display: block;
 }

@@ -1,7 +1,7 @@
 const CVS = document.querySelector('.field');
 const context = CVS.getContext('2d');
 const wrapStart = document.querySelector('.wrap')
-const btnStart = document.querySelector('.start_game')
+
 const healthPlayer1 = document.querySelector('.health_player1');
 const healthPlayer2 = document.querySelector('.health_player2');
 const timerGameround = document.querySelector('.timer')

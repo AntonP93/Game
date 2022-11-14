@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>Game</title>
 </head>
 <body>
@@ -13,12 +14,10 @@
     <div class="main">
         
         <div class="main_buttons"> 
-            <input class='btn start_game'type='button'  value='Cтарт игры!'>
-            <input class='btn lastPlayers' type='button'  value='Таблица игроков'>
-            <input class='btn control'type='button'  value='Управлене'>
-            <!-- <input class='control'type='button'  value='Показать кнопки управления'> -->
-            <!-- <input class='control'type='button'  value='Рестарт'> -->
-            <!-- <input class='sound'type='button'  value='Звук'> -->
+           
+            <!-- <input class='control'type='button'  value='Показать кнопки управления'> 
+            <input class='control'type='button'  value='Рестарт'>
+            <input class='sound'type='button'  value='Звук'> -->
         </div>
 
         <div class="main_tab"></div>
@@ -45,28 +44,29 @@
                 </div>
                 <div class="wrap_health wrap_health2"><div class="health_player2"></div></div>    
             </div> 
-            <div class="control_btn control_btn__player1">
-                <div class="up"></div>
-                <div class="left"></div>
-                <div class="right"></div>
-            </div>
-            <div class="attack_btn_player1">
-
-            </div>
-            <div class="control_btn control_btn_player2">
-                <div class="up up_player2"></div>
-                <div class="left left_player2"></div>
-                <div class="right right_player2"></div>
-            </div>
-            <div class="attack_btn_player2">
-                
+            <div class="wrap_btn_controlPlayer">
+                <div class="control_btn control_btn__player1">
+                    <div class="up"></div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <div class="control_btn attack_btn_player1">
+                </div>
+                <div class="control_btn control_btn_player2">
+                    <div class="up up_player2"></div>
+                    <div class="left left_player2"></div>
+                    <div class="right right_player2"></div>
+                </div>
+                <div class="control_btn attack_btn_player2">
+                </div>
             </div>
             <canvas class="field"></canvas>
-        </div> -->
+        </div> 
     </div>
+    <script src="main.js"></script>
     <script src="musicscript.js"></script>
     <script src="script.js"></script>
     <script src="control_touch.js"></script>
-    <script src="main.js"></script>
+    
 </body>
 </html>
