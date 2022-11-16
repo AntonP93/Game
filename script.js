@@ -413,13 +413,12 @@ function startGame(){
         function winnerPlayer(timerCase){
             clearTimeout(timerCase)
             if(Player1.health === Player2.health){
-
-                console.log("ничья")
+                playerWin()
             } else if (Player1.health < Player2.health){
-                console.log("победил игрок 2")
-
+                playerWin(playerName1)
+ 
             } else if (Player1.health > Player2.health){
-                console.log("победил игрок 1")
+                playerWin(playerName2)
 
             } 
 

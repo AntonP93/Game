@@ -5,7 +5,7 @@ body{
     padding: 0;
     margin: 0;
     position: relative;
-    background:url(img/backgroundMain.jpg) no-repeat;
+    background:url(img/backgroundMain.jpg);
    
 }
 
@@ -139,13 +139,82 @@ body{
     background: url(img/control/sword_icon_138128.svg) center center/cover no-repeat;
 }
 .btn{
-    width: 20%;
-    height: 10%;
+    background-color:rgb(209, 23, 23);
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    
+}
+
+.wrap_btn_controlPlayer{
+    display: block;
+}
+.wrap_name_player{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.title_name{
+    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+}
+.btn_save_name{
+    margin-top: 3%;
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    border: 1px solid;
+    border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+    border-image-slice: 1;
+    margin: 10px 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: 2px;
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
+}
+.btn:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
+}
+.btn:hover {
+    background: rgba(255, 255, 255, 0);
+  }
+.sliding-button:hover:before {
+    bottom: 0%;
+    top: auto;
+    height: 100%;
 }
 .btn_close{
     display: block;
     margin: 0 auto;
+    margin-top: 10px;
 }
-.wrap_btn_controlPlayer{
-    display: block;
+.win_tab{
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.text_win_tab{
+    margin-top: 10px;
+    font-size: 50px;
+    color: white;
 }
