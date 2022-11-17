@@ -150,7 +150,7 @@ body{
     display: block;
 }
 .wrap_name_player{
-    margin-top: 5%;
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,4 +217,10 @@ body{
     margin-top: 10px;
     font-size: 50px;
     color: white;
+}
+.player_Name_win{
+    font-size: 35px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;      
 }

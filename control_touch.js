@@ -76,11 +76,23 @@ document.addEventListener('keydown',(EO)=>{
     
                 Player1.speed.x = 5;
             break
+            case 'в':
+    
+                Player1.speed.x = 5;
+            break
             case 'a':
         
                 Player1.speed.x = -5;
             break 
+            case 'ф':
+        
+                Player1.speed.x = -5;
+            break 
             case 'w':
+                if(Player1.speed.y == 0)
+                Player1.speed.y = -10;
+            break 
+            case 'ц':
                 if(Player1.speed.y == 0)
                 Player1.speed.y = -10;
             break 
@@ -96,10 +108,14 @@ document.addEventListener('keydown',(EO)=>{
                 if(Player2.speed.y == 0)
                 Player2.speed.y = -10;
             break
-            case 's':
+            case 's'||'ы':
 
                 Player1.attacking();
             break
+            // case 'ы':
+
+            //     Player1.attacking();
+            // break
             case 'ArrowDown':
 
                 Player2.attacking();
@@ -111,11 +127,18 @@ document.addEventListener('keydown',(EO)=>{
 
 document.addEventListener('keyup',(EO)=>{
     EO=EO||window.event;
+    console.log(EO.key)
     switch(EO.key) {
         case 'd':
             Player1.speed.x = 0;
         break
+        case 'в':
+            Player1.speed.x = 0;
+        break
         case 'a':
+            Player1.speed.x = 0;
+        break
+        case 'ф':
             Player1.speed.x = 0;
         break
         case 'ArrowRight':

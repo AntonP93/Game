@@ -3,8 +3,12 @@ const main_buttons = document.querySelector('.main_buttons')
 let playerName1;
 let playerName2;
 let resultGame;
-let namePlayers = false;
+let winList = [];
 
+let namePlayers = false;
+const ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
+let updatePassword;
+const stringName='PLASTUN_FIGHT_TABLEOFRECORDS';
 console.log(window.innerWidth,window.innerHeight)
 
 
@@ -19,7 +23,7 @@ window.addEventListener('resize',function(){
 
 main_buttons.innerHTML = `
 <input class='btn start_game'type='button'  value='Cтарт игры!'>
-<input class='btn lastPlayers' type='button'  value='Таблица игроков'>
+<input class='btn lastPlayers' type='button'  value='Победители'>
 <input class='btn control'type='button'  value='Управление'>`
 
 
@@ -29,8 +33,20 @@ const btnControl = document.querySelector('.control')
 const btnLastPlayer = document.querySelector('.lastPlayers')
 const mainTab = document.querySelector('.main_tab')
 
+btnLastPlayer.addEventListener('click',function(){
+    
+    mainTab.innerHTML = '';
+    console.log(winList[0])
+    for(let i = 0; i < 10;i++ ){
+        if(winList[i]){
+            let winName = document.createElement('div');
+            winName.className = 'player_Name_win';
+            winName.innerHTML = winList[i];
+            mainTab.appendChild(winName)
+        }   
+    }
 
-
+})
 btnControl.addEventListener('click', function(){
 mainTab.innerHTML = `<div class="main_tab_title">
 Управлене персонажем
@@ -60,6 +76,7 @@ function chek(){
     } else {
         namePlayers = true;    
     }
+    
 
 }
 function playerName(){
@@ -99,23 +116,35 @@ function playerWin(player){
     if(mainTab.childNodes.length == 0){
         main_buttons.innerHTML = ''
         wrapStart.style.display = 'none';
-        mainTab.innerHTML = `
+        if(!player){
+
+            mainTab.innerHTML = `
         <div class="win_tab">
-            <div class="text_win_tab">Победил игрок ${player}</div>
+            <div class="text_win_tab">"${resultGame}"</div>
+            <input class='btn  btn_new_game' type='button'  value='Реcтарт!'>
+        </div> `    
+        } else{
+            mainTab.innerHTML = `
+        <div class="win_tab">
+            <div class="text_win_tab">Победил игрок "${resultGame}"</div>
             <input class='btn btn_save_win' type='button'  value='Записать победителя'>
             <input class='btn  btn_new_game' type='button'  value='Реванш!'>
         </div> `
-        const btnSavewin = document.querySelector('.btn_save_win');
-        const btnNewgame = document.querySelector('.btn_new_game');
-        console.log(btnNewgame)
+        }
         
+        const btnSavewin = document.querySelector('.btn_save_win');
+        const btnNewgame = document.querySelector('.btn_new_game'); 
         btnNewgame.addEventListener('click',function(){
             console.log('Реванш')
             window.location.reload(false);    
-    })
+        })
+
+        btnSavewin.addEventListener('click',function(){
+            storeInfo(); 
+            console.log('eexp')
+        })
+
     }
-    
-    // cancelAnimationFrame(tick)  
 }
 
 
@@ -152,11 +181,74 @@ if (window.innerWidth > window.innerHeight ) {
     },false) 
 } 
 
+window.onbeforeunload=befUnload;
+
+function befUnload(EO) {
+  EO=EO||window.event;
+  if (gameStatus === 1)
+    EO.returnValue='Придется начинать сначала!';
+};
+
+function storeInfo() {
+	updatePassword = Math.random();
+    console.log(playerName1,playerName2)
+	$.ajax({
+		url: ajaxHandlerScript, type: 'POST', cache: false, dataType: 'json',
+		data: { f: 'LOCKGET', n: stringName, p: updatePassword },
+		success: lockGetReady, error: errorHandler
+	}
+	);
+}
+
+function lockGetReady(callresult) {
+	if (callresult.error != undefined)
+		alert(callresult.error);
+	else {
+        const info=JSON.parse(callresult.result);
+        info.unshift(resultGame)
+		$.ajax({
+			url: ajaxHandlerScript, type: 'POST', cache: false, dataType: 'json',
+			data: {
+				f: 'UPDATE', n: stringName,
+				v: JSON.stringify(info), p: updatePassword
+			},
+			success: updateReady, error: errorHandler
+		}
+		);
+	}
+}
+
+function restoreInfo() {
+    $.ajax(
+        {
+            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+            data : { f : 'READ', n : stringName },
+            success : readReady, error : errorHandler
+        }
+    );
+}
+
+function readReady(callresult) {
+    if ( callresult.error!=undefined )
+        alert(callresult.error);
+    else if ( callresult.result!="" ) {
+        const info=JSON.parse(callresult.result);
+        winList = info;
+        console.log(info)
+    }
+}
+
+function updateReady(callresult) {
+	if (callresult.error != undefined)
+		alert(callresult.error);
+}
+
+function errorHandler(jqXHR, statusStr, errorStr) {
+	alert(statusStr + ' ' + errorStr);
+}
 
 
-
-
-
+restoreInfo();
 
 
 
