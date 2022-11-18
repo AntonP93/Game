@@ -415,10 +415,10 @@ function startGame(){
             if(Player1.health === Player2.health){
                 playerWin()
             } else if (Player1.health < Player2.health){
-                playerWin(playerName1)
+                playerWin(playerName2)
  
             } else if (Player1.health > Player2.health){
-                playerWin(playerName2)
+                playerWin(playerName1)
 
             } 
 

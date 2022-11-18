@@ -13,8 +13,8 @@ console.log(window.innerWidth,window.innerHeight)
 
 
 window.addEventListener('resize',function(){
-    if(window.innerWidth < window.innerHeight ){
-        alert('Переверни устройство')
+    if(window.innerWidth < 1024){
+        alert('Для комфортной игры увеличьте размер окна или переверните устрйство')
         }
 })
 
@@ -73,7 +73,9 @@ btnClose.addEventListener('click',function(){
 function chek(){
     if ( !playerName1 || !playerName2) {
         alert('Вы не ввели имя игрока!')
-    } else {
+    } else if(playerName1 == playerName2) {
+        alert('Возможно ошибка, имена одинаковы!') 
+    } else {    
         namePlayers = true;    
     }
     
@@ -135,13 +137,11 @@ function playerWin(player){
         const btnSavewin = document.querySelector('.btn_save_win');
         const btnNewgame = document.querySelector('.btn_new_game'); 
         btnNewgame.addEventListener('click',function(){
-            console.log('Реванш')
             window.location.reload(false);    
         })
 
         btnSavewin.addEventListener('click',function(){
             storeInfo(); 
-            console.log('eexp')
         })
 
     }
@@ -204,8 +204,12 @@ function lockGetReady(callresult) {
 	if (callresult.error != undefined)
 		alert(callresult.error);
 	else {
+
         const info=JSON.parse(callresult.result);
-        info.unshift(resultGame)
+        if(!info.includes(resultGame)){
+            info.unshift(resultGame)
+        }
+        
 		$.ajax({
 			url: ajaxHandlerScript, type: 'POST', cache: false, dataType: 'json',
 			data: {
